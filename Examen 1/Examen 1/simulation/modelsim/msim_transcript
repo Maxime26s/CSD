@@ -1,0 +1,109 @@
+# Reading pref.tcl
+# do Lab1_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vcom -2008 -work work {C:/Users/msimard104/Desktop/CSD7/Examen 1/ff.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 09:44:45 on Feb 24,2023
+# vcom -reportprogress 300 -2008 -work work C:/Users/msimard104/Desktop/CSD7/Examen 1/ff.vhd 
+# -- Loading package STANDARD
+# -- Compiling package ff
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity vDFF
+# -- Compiling architecture impl of vDFF
+# -- Compiling entity sDFF
+# -- Compiling architecture impl of sDFF
+# -- Compiling entity vDFFE
+# -- Compiling architecture impl of vDFFE
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Compiling entity ROM
+# -- Compiling architecture impl of ROM
+# -- Compiling entity RAM
+# -- Compiling architecture impl of RAM
+# End time: 09:44:45 on Feb 24,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -2008 -work work {C:/Users/msimard104/Desktop/CSD7/Examen 1/fsm.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 09:44:45 on Feb 24,2023
+# vcom -reportprogress 300 -2008 -work work C:/Users/msimard104/Desktop/CSD7/Examen 1/fsm.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package q3
+# -- Loading package ff
+# -- Compiling entity fsm
+# -- Compiling architecture arch of fsm
+# End time: 09:44:45 on Feb 24,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vcom -2008 -work work {C:/Users/msimard104/Desktop/CSD7/Examen 1/fsm_tb.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 09:44:45 on Feb 24,2023
+# vcom -reportprogress 300 -2008 -work work C:/Users/msimard104/Desktop/CSD7/Examen 1/fsm_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NUMERIC_STD
+# -- Loading package q3
+# -- Compiling entity fsm_tb
+# -- Compiling architecture test of fsm_tb
+# End time: 09:44:45 on Feb 24,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs="+acc"  fsm_tb
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs=""+acc"" fsm_tb 
+# Start time: 09:44:45 on Feb 24,2023
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading ieee.numeric_std(body)
+# Loading work.q3
+# Loading work.fsm_tb(test)
+# Loading work.ff
+# Loading work.fsm(arch)
+# Loading work.sdff(impl)
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# ** Note: Testbench starting...
+#    Time: 0 ps  Iteration: 0  Instance: /fsm_tb
+# ** Note: clk = 0; w = 0; z = U; state = 1UU00;
+#    Time: 20 ns  Iteration: 0  Instance: /fsm_tb
+# ** Note: clk = 1; w = 0; z = U; state = 01U00;
+#    Time: 40 ns  Iteration: 0  Instance: /fsm_tb
+# ** Note: clk = 1; w = 0; z = 1; state = 00100;
+#    Time: 60 ns  Iteration: 0  Instance: /fsm_tb
+# ** Note: clk = 1; w = 0; z = 1; state = 00100;
+#    Time: 80 ns  Iteration: 0  Instance: /fsm_tb
+# ** Note: clk = 1; w = 1; z = 0; state = 00010;
+#    Time: 100 ns  Iteration: 0  Instance: /fsm_tb
+# ** Note: clk = 1; w = 1; z = 1; state = 00001;
+#    Time: 120 ns  Iteration: 0  Instance: /fsm_tb
+# ** Note: clk = 1; w = 1; z = 1; state = 00001;
+#    Time: 140 ns  Iteration: 0  Instance: /fsm_tb
+# ** Note: clk = 1; w = 0; z = 0; state = 01000;
+#    Time: 160 ns  Iteration: 0  Instance: /fsm_tb
+# ** Note: clk = 1; w = 1; z = 0; state = 00010;
+#    Time: 180 ns  Iteration: 0  Instance: /fsm_tb
+# ** Note: clk = 1; w = 1; z = 1; state = 00001;
+#    Time: 200 ns  Iteration: 0  Instance: /fsm_tb
+# End time: 09:44:59 on Feb 24,2023, Elapsed time: 0:00:14
+# Errors: 0, Warnings: 0
