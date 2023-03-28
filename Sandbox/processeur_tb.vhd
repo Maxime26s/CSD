@@ -31,6 +31,7 @@ begin
 	 
     -- mvi
     din <= "001001001";
+	 wait for 5 ns;
 	 clk <= '1';
 	 wait for 10 ns;
     clk <= '0';
@@ -42,6 +43,7 @@ begin
 	 
 	 -- mv
     din <= "000000001";
+	 wait for 5 ns;
 	 clk <= '1';
 	 wait for 10 ns;
     clk <= '0';
@@ -52,6 +54,16 @@ begin
 	 wait for 10 ns;
 	 -- add
     din <= "010000001";
+	 wait for 5 ns;
+	 clk <= '1';
+	 wait for 10 ns;
+	 clk <= '0';
+	 wait for 10 ns;
+	 clk <= '1';
+	 wait for 10 ns;
+	 clk <= '0';
+	 wait for 10 ns;
+	 -- real start cuz bugged
 	 clk <= '1';
 	 wait for 10 ns;
 	 clk <= '0';
@@ -68,11 +80,22 @@ begin
 	 wait for 10 ns;
 	 clk <= '0';
 	 wait for 10 ns;
-	 	 clk <= '1';
+	 -- sub
+	 din <= "011000001";
+	 wait for 5 ns;
+	 clk <= '1';
 	 wait for 10 ns;
 	 clk <= '0';
 	 wait for 10 ns;
-	 	 clk <= '1';
+	 clk <= '1';
+	 wait for 10 ns;
+	 clk <= '0';
+	 wait for 10 ns;
+	 clk <= '1';
+	 wait for 10 ns;
+	 clk <= '0';
+	 wait for 10 ns;
+	 clk <= '1';
 	 wait for 10 ns;
 	 clk <= '0';
 	 wait for 10 ns;

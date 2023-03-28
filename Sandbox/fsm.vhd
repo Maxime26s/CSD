@@ -43,7 +43,7 @@ END fsm;
 ARCHITECTURE arch OF fsm IS
 	SIGNAL Tstep_Q, Tstep_D: State_type;
 BEGIN
-	statetable: PROCESS (Tstep_Q, run, rst)
+	statetable: PROCESS (Tstep_Q, i, run, rst)
 	BEGIN
 		CASE Tstep_Q IS
 			WHEN T0 => 
@@ -74,7 +74,6 @@ BEGIN
 	CASE Tstep_Q IS
 		WHEN T0 => 
 			done <= '1';
-			mode <= '0';
 			inControl <= "10000000000";
 			outControl <= "0100000000";
 		WHEN T1 =>
@@ -100,7 +99,7 @@ BEGIN
 		WHEN T2 =>
 			CASE i IS
 				when "010" | "011" =>
-					inControl <= "00100000000";
+					inControl <= "01000000000";
 					outControl <= "00" & yReg;
 				when others =>
 					inControl <= (others => '0');
