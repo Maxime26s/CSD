@@ -29,5 +29,12 @@ END registre;
 
 ARCHITECTURE arch OF registre IS
 BEGIN
-	ff : vDFF generic map(n) port map(clk and activated, rin, rout);
+--	ff : vDFF generic map(n) port map(clk and activated, rin, rout);
+	process(all) BEGIN
+		if activated then
+			if rising_edge(clk) then
+			rout <= rin;
+			end if;
+		end if;
+	end process;
 END arch;

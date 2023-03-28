@@ -10,6 +10,8 @@ package fsm_constants is
 			run, clk, rst : in std_logic;
 			inControl : out std_logic_vector(10 downto 0);
 			outControl : out std_logic_vector(9 downto 0);
+			done : out std_logic;
+			mode : out std_logic;
 			stateValue : out State_type
 		);
 	end component;
@@ -32,17 +34,15 @@ ENTITY fsm IS
 		run, clk, rst : in std_logic;
 		inControl : out std_logic_vector(10 downto 0);
 		outControl : out std_logic_vector(9 downto 0);
+		done : out std_logic;
+		mode : out std_logic;
 		stateValue : out work.fsm_constants.State_type
 	);
 END fsm;
 
 ARCHITECTURE arch OF fsm IS
-	--TYPE State_type IS (T0, T1, T2, T3);
 	SIGNAL Tstep_Q, Tstep_D: State_type;
-	SIGNAL IRin : std_logic;
 BEGIN
-	--vDFF0: vDFF generic map(2) port map(clk, Tstep_D, Tstep_Q);
-
 	statetable: PROCESS (Tstep_Q, run, rst)
 	BEGIN
 		CASE Tstep_Q IS
@@ -73,35 +73,44 @@ BEGIN
 	BEGIN
 	CASE Tstep_Q IS
 		WHEN T0 => 
-			IRin <= '1';
-			inControl <= (others => '0');
-			outControl <= (others => '0');
-
-		WHEN T1 => 
+			done <= '1';
+			mode <= '0';
+			inControl <= "10000000000";
+			outControl <= "0100000000";
+		WHEN T1 =>
+			done <= '0';
+			
 			CASE i IS
-				when "000" | "001" | "010" | "011" =>
+				when "000" =>
 					inControl <= "000" & xReg;
 					outControl <= "00" & yReg;
+				when "001" =>
+					inControl <= "000" & xReg;
+					outControl <= "0100000000";
+				when "010" | "011" =>
+					inControl <= "00100000000";
+					outControl <= "00" & xReg;
+					IF i = "010" THEN mode <= '1';
+					ELSE mode <= '0';
+					END IF;
 				when others =>
 					inControl <= (others => '0');
 					outControl <= (others => '0');
 			END CASE;
-
 		WHEN T2 =>
 			CASE i IS
 				when "010" | "011" =>
-					inControl <= "000" & xReg;
+					inControl <= "00100000000";
 					outControl <= "00" & yReg;
 				when others =>
 					inControl <= (others => '0');
 					outControl <= (others => '0');
 			END CASE;
-
 		WHEN T3 =>
 			CASE i IS
 				when "010" | "011" =>
 					inControl <= "000" & xReg;
-					outControl <= "00" & yReg;
+					outControl <= "1000000000";
 				when others =>
 					inControl <= (others => '0');
 					outControl <= (others => '0');
