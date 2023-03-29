@@ -41,7 +41,7 @@ set_global_assignment -name DEVICE 10M50DAF484C6GES
 set_global_assignment -name TOP_LEVEL_ENTITY Text_screen_test
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "13:21:36  MAY 14, 2014"
-set_global_assignment -name LAST_QUARTUS_VERSION "20.1.0 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
@@ -245,7 +245,7 @@ set_location_assignment PIN_L19 -to HEX5[7]
 set_location_assignment PIN_R20 -to DRAM_ADDR[12]
 set_location_assignment PIN_T21 -to DRAM_BA[0]
 set_location_assignment PIN_T22 -to DRAM_BA[1]
-set_global_assignment -name VHDL_FILE Text_screen_test.vhd
+set_global_assignment -name VHDL_FILE Text_screen_test.vhd -hdl_version VHDL_2008
 set_global_assignment -name VHDL_FILE vga_font.vhd
 set_global_assignment -name MIF_FILE ascii_char_rom.mif
 set_global_assignment -name MIF_FILE scan_to_ascii.mif
