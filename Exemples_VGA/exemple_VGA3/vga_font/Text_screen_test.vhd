@@ -1,6 +1,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
+use IEEE.std_logic_unsigned;
 
 entity Text_screen_test is
 	port( CLOCK_50	: in std_logic;
@@ -26,6 +27,9 @@ architecture DE1 of Text_screen_test is
 	type state is ( clean0, clean1, clean2, clean3, done);
 	signal SV : state;
 	
+	-- Define a signal for the current character to write to the screen
+	signal curr_char: std_logic_vector(6 downto 0);
+	
 begin
 	vga : entity work.vga_font port map(	--VGA with font table. 
 		clock => clock,
@@ -43,6 +47,8 @@ begin
 	mem_adr <= std_logic_vector(y) & std_logic_vector(x);	
 	
 	screen_test: process(clock, reset)
+	
+
 	begin
 		if(reset = '0') then	
 			mem_wr <= '0';		-----------------
@@ -53,12 +59,23 @@ begin
 		elsif(clock'event AND clock = '1') then
 			case SV is
 				when clean0 =>	
-					mem_wr <= '1';	
-					mem_in <= data;
-					SV <= clean1;		
+					mem_wr <= '1';
+					mem_in <= curr_char;
+					
+					case y is
+						when to_unsigned(1,6) =>
+							case x is
+								when to_unsigned(1,7) =>
+									curr_char <= "1000000";
+								when to_unsigned(2,7) =>
+									curr_char <= 7d"110";
+								others => 
+									curr_char <= 7d"0";
+							end case;
+					end case;
+					SV <= clean1;	
 				when clean1 =>
 					x <= x+1;
-					data <= std_logic_vector(unsigned(data) + 1);
 					SV <= clean2;
 				when clean2 =>
 					mem_wr <= '0';	
