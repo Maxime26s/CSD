@@ -63,15 +63,6 @@ begin
 	 wait for 10 ns;
 	 clk <= '0';
 	 wait for 10 ns;
-	 -- real start cuz bugged
-	 clk <= '1';
-	 wait for 10 ns;
-	 clk <= '0';
-	 wait for 10 ns;
-	 clk <= '1';
-	 wait for 10 ns;
-	 clk <= '0';
-	 wait for 10 ns;
 	 clk <= '1';
 	 wait for 10 ns;
 	 clk <= '0';

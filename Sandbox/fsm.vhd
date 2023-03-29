@@ -75,7 +75,7 @@ BEGIN
 		WHEN T0 => 
 			done <= '1';
 			inControl <= "10000000000";
-			outControl <= "0100000000";
+			outControl <= "0100000000";--"0000000001";--"0100000000";
 		WHEN T1 =>
 			done <= '0';
 			
