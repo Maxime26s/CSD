@@ -14,6 +14,17 @@ ENTITY Text_screen_test IS
 END Text_screen_test;
 
 ARCHITECTURE DE1 OF Text_screen_test IS
+
+	function ascii_to_vector(input_num : integer) return std_logic_vector is
+begin
+  return std_logic_vector(to_unsigned(input_num, 7));
+end function ascii_to_vector;
+
+function ternary_to_ascii(input_vec : std_logic_vector(2 downto 0)) return integer is
+begin
+  return to_integer(to_unsigned(to_integer(unsigned(input_vec)),7) + 48);
+end function ternary_to_ascii;
+
 	ALIAS clock : STD_LOGIC IS Clock_50;
 	ALIAS reset : STD_LOGIC IS KEY(0);
 	CONSTANT screen_width : INTEGER := 80;
@@ -29,19 +40,11 @@ ARCHITECTURE DE1 OF Text_screen_test IS
 	SIGNAL SV : state;
 
 	-- Define a signal for the current character to write to the screen
-	SIGNAL curr_char : STD_LOGIC_VECTOR(6 DOWNTO 0) := STD_LOGIC_VECTOR(to_unsigned(32, 7));
+	SIGNAL curr_char : STD_LOGIC_VECTOR(6 DOWNTO 0) := std_logic_vector(to_unsigned(32, 7));
 	
 	signal din : std_logic_vector(8 downto 0) := "101010101";
 	
-	function ascii_to_vector(input_num : integer) return std_logic_vector is
-begin
-  return std_logic_vector(to_unsigned(input_num, 7));
-end function ascii_to_vector;
 
-function ternary_to_ascii(input_vec : std_logic_vector(2 downto 0)) return integer is
-begin
-  return to_integer(to_unsigned(to_integer(unsigned(input_vec)),7) + 48);
-end function ternary_to_ascii;
 
 BEGIN
 	vga : ENTITY work.vga_font PORT MAP(--VGA with font table. 
@@ -78,330 +81,330 @@ BEGIN
 								WHEN to_unsigned(1, 7) =>
 									curr_char <= ascii_to_vector(73);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(78, 7));
+									curr_char <= ascii_to_vector(78);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(83, 7));
+									curr_char <= ascii_to_vector(83);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(84, 7));
+									curr_char <= ascii_to_vector(84);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(82, 7));
+									curr_char <= ascii_to_vector(82);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(85, 7));
+									curr_char <= ascii_to_vector(85);
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(67, 7));
+									curr_char <= ascii_to_vector(67);
 								WHEN to_unsigned(8, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(84, 7));
+									curr_char <= ascii_to_vector(84);
 								WHEN to_unsigned(9, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(73, 7));
+									curr_char <= ascii_to_vector(73);
 								WHEN to_unsigned(10, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(79, 7));
+									curr_char <= ascii_to_vector(79);
 								WHEN to_unsigned(11, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(78, 7));
+									curr_char <= ascii_to_vector(78);
 								WHEN to_unsigned(12, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(83, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(83);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(3, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(77, 7));
+									curr_char <= ascii_to_vector(77);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(86, 7));
+									curr_char <= ascii_to_vector(86);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(48, 7));
+									curr_char <= ascii_to_vector(48);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(48, 7));
+									curr_char <= ascii_to_vector(48);
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(48, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(48);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(4, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(77, 7));
+									curr_char <= ascii_to_vector(77);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(86, 7));
+									curr_char <= ascii_to_vector(86);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(73, 7));
+									curr_char <= ascii_to_vector(73);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(48, 7));
+									curr_char <= ascii_to_vector(48);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(48, 7));
+									curr_char <= ascii_to_vector(48);
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(49, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(49);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(5, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(65, 7));
+									curr_char <= ascii_to_vector(65);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(68, 7));
+									curr_char <= ascii_to_vector(68);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(68, 7));
+									curr_char <= ascii_to_vector(68);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(48, 7));
+									curr_char <= ascii_to_vector(48);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(49, 7));
+									curr_char <= ascii_to_vector(49);
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(48, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(48);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(6, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(83, 7));
+									curr_char <= ascii_to_vector(83);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(85, 7));
+									curr_char <= ascii_to_vector(85);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(66, 7));
+									curr_char <= ascii_to_vector(66);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(48, 7));
+									curr_char <= ascii_to_vector(48);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(49, 7));
+									curr_char <= ascii_to_vector(49);
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(49, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(49);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(7, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(77, 7));
+									curr_char <= ascii_to_vector(77);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(85, 7));
+									curr_char <= ascii_to_vector(85);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(76, 7));
+									curr_char <= ascii_to_vector(76);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(49, 7));
+									curr_char <= ascii_to_vector(49);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(48, 7));
+									curr_char <= ascii_to_vector(48);
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(48, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(48);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(8, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(68, 7));
+									curr_char <= ascii_to_vector(68);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(73, 7));
+									curr_char <= ascii_to_vector(73);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(86, 7));
+									curr_char <= ascii_to_vector(86);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(49, 7));
+									curr_char <= ascii_to_vector(49);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(48, 7));
+									curr_char <= ascii_to_vector(48);
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(49, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(49);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(9, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(80, 7));
+									curr_char <= ascii_to_vector(80);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(79, 7));
+									curr_char <= ascii_to_vector(79);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(87, 7));
+									curr_char <= ascii_to_vector(87);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(49, 7));
+									curr_char <= ascii_to_vector(49);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(49, 7));
+									curr_char <= ascii_to_vector(49);
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(48, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(48);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(10, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(67, 7));
+									curr_char <= ascii_to_vector(67);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(76, 7));
+									curr_char <= ascii_to_vector(76);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(82, 7));
+									curr_char <= ascii_to_vector(82);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(49, 7));
+									curr_char <= ascii_to_vector(49);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(49, 7));
+									curr_char <= ascii_to_vector(49);
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(49, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(49);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(12, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(95, 7));
+									curr_char <= ascii_to_vector(95);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(95, 7));
+									curr_char <= ascii_to_vector(95);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(95, 7));
+									curr_char <= ascii_to_vector(95);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(95, 7));
+									curr_char <= ascii_to_vector(95);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(95, 7));
+									curr_char <= ascii_to_vector(95);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(95, 7));
+									curr_char <= ascii_to_vector(95);
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(95, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(95);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(15, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(82, 7));
+									curr_char <= ascii_to_vector(82);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(69, 7));
+									curr_char <= ascii_to_vector(69);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(71, 7));
+									curr_char <= ascii_to_vector(71);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(73, 7));
+									curr_char <= ascii_to_vector(73);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(83, 7));
+									curr_char <= ascii_to_vector(83);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(84, 7));
+									curr_char <= ascii_to_vector(84);
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(82, 7));
+									curr_char <= ascii_to_vector(82);
 								WHEN to_unsigned(8, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(69, 7));
+									curr_char <= ascii_to_vector(69);
 								WHEN to_unsigned(9, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(83, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(83);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(17, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(82, 7));
+									curr_char <= ascii_to_vector(82);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(69, 7));
+									curr_char <= ascii_to_vector(69);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(71, 7));
+									curr_char <= ascii_to_vector(71);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(48, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(48);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(18, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(82, 7));
+									curr_char <= ascii_to_vector(82);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(69, 7));
+									curr_char <= ascii_to_vector(69);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(71, 7));
+									curr_char <= ascii_to_vector(71);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(49, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(49);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(19, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(82, 7));
+									curr_char <= ascii_to_vector(82);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(69, 7));
+									curr_char <= ascii_to_vector(69);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(71, 7));
+									curr_char <= ascii_to_vector(71);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(50, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(50);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(20, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(82, 7));
+									curr_char <= ascii_to_vector(82);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(69, 7));
+									curr_char <= ascii_to_vector(69);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(71, 7));
+									curr_char <= ascii_to_vector(71);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(51, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(51);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(21, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(82, 7));
+									curr_char <= ascii_to_vector(82);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(69, 7));
+									curr_char <= ascii_to_vector(69);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(71, 7));
+									curr_char <= ascii_to_vector(71);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(52, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(52);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(22, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(82, 7));
+									curr_char <= ascii_to_vector(82);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(69, 7));
+									curr_char <= ascii_to_vector(69);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(71, 7));
+									curr_char <= ascii_to_vector(71);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(53, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(53);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(23, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(82, 7));
+									curr_char <= ascii_to_vector(82);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(69, 7));
+									curr_char <= ascii_to_vector(69);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(71, 7));
+									curr_char <= ascii_to_vector(71);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(54, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(54);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(24, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(82, 7));
+									curr_char <= ascii_to_vector(82);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(69, 7));
+									curr_char <= ascii_to_vector(69);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(71, 7));
+									curr_char <= ascii_to_vector(71);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(55, 7));
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(55);
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(26, 6) =>
 							CASE x IS
 								WHEN to_unsigned(1, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(68, 7));
+									curr_char <= ascii_to_vector(68);
 								WHEN to_unsigned(2, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(73, 7));
+									curr_char <= ascii_to_vector(73);
 								WHEN to_unsigned(3, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(78, 7));
+									curr_char <= ascii_to_vector(78);
 								WHEN to_unsigned(4, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(din(8 downto 6)));--STD_LOGIC_VECTOR(to_unsigned(to_integer(unsigned(din(8 downto 6))),7) + 48);
+									curr_char <= ascii_to_vector(ternary_to_ascii(din(8 downto 6)));
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(to_integer(unsigned(din(5 downto 3))),7) + 48);
+									curr_char <= ascii_to_vector(ternary_to_ascii(din(5 downto 3)));
 								WHEN to_unsigned(8, 7) =>
-									curr_char <= STD_LOGIC_VECTOR(to_unsigned(to_integer(unsigned(din(2 downto 0))),7) + 48);
-								WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+									curr_char <= ascii_to_vector(ternary_to_ascii(din(2 downto 0)));
+								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
-						WHEN OTHERS => curr_char <= STD_LOGIC_VECTOR(to_unsigned(32, 7));
+						WHEN OTHERS => curr_char <= ascii_to_vector(32);
 					END CASE;
 					SV <= clean1;
 				WHEN clean1 =>
