@@ -11,7 +11,11 @@ ENTITY processeur_interface IS
 		KEY : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
 		CLOCK_50 : in std_logic;
 		LEDR : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
-		HEX0, HEX1, HEX2, HEX3, HEX4, HEX5 : out std_logic_vector(6 downto 0)
+		HEX0, HEX1, HEX2, HEX3, HEX4, HEX5 : out std_logic_vector(6 downto 0);
+		
+		VGA_R, VGA_G, VGA_B : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+		VGA_HS : OUT STD_LOGIC;
+		VGA_VS : OUT STD_LOGIC
 	);
 END processeur_interface;
 
@@ -23,7 +27,7 @@ BEGIN
 	d_key0 : entity work.debounce port map(CLOCK_50, KEY(0), clk);
 	d_key1 : entity work.debounce port map(CLOCK_50, KEY(1), rst);
 	
-	processeur0: processeur PORT MAP (SW(0), clk, rst, SW(9 downto 1), buswire, done);
+	processeur0: processeur PORT MAP (SW(0), clk, rst, SW(9 downto 1), buswire, done, CLOCK_50, KEY, VGA_R, VGA_G, VGA_B, VGA_HS, VGA_VS);
 	
 	LEDR <= buswire & done;
 	

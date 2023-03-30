@@ -12,7 +12,7 @@ architecture test of fsm_tb is
 	signal xReg, yReg : std_logic_vector(7 downto 0);
 	signal run, clk, rst : std_logic;
 	signal inControl : std_logic_vector(10 downto 0);
-	signal outControl : std_logic_vector(9 downto 0);
+	signal outControl : std_logic_vector(10 downto 0);
 	signal done : std_logic;
 	signal state : State_type;
 begin
@@ -63,7 +63,7 @@ begin
 		wait for 10 ns;
 		clk <= '0';
 		wait for 10 ns;
-		-- add
+		-- sub
 		i <= "011";
 		clk <= '1';
 		wait for 10 ns;
@@ -73,6 +73,70 @@ begin
 		wait for 10 ns;
 		clk <= '0';
 		wait for 10 ns;
+		clk <= '1';
+		wait for 10 ns;
+		clk <= '0';
+		wait for 10 ns;
+		clk <= '1';
+		wait for 10 ns;
+		clk <= '0';
+		wait for 10 ns;
+		-- mul
+		i <= "100";
+		clk <= '1';
+		wait for 10 ns;
+		clk <= '0';
+		wait for 10 ns;
+		clk <= '1';
+		wait for 10 ns;
+		clk <= '0';
+		wait for 10 ns;
+		clk <= '1';
+		wait for 10 ns;
+		clk <= '0';
+		wait for 10 ns;
+		clk <= '1';
+		wait for 10 ns;
+		clk <= '0';
+		wait for 10 ns;
+		-- div
+		i <= "101";
+		clk <= '1';
+		wait for 10 ns;
+		clk <= '0';
+		wait for 10 ns;
+		clk <= '1';
+		wait for 10 ns;
+		clk <= '0';
+		wait for 10 ns;
+		clk <= '1';
+		wait for 10 ns;
+		clk <= '0';
+		wait for 10 ns;
+		clk <= '1';
+		wait for 10 ns;
+		clk <= '0';
+		wait for 10 ns;
+		-- pow
+		i <= "110";
+		clk <= '1';
+		wait for 10 ns;
+		clk <= '0';
+		wait for 10 ns;
+		clk <= '1';
+		wait for 10 ns;
+		clk <= '0';
+		wait for 10 ns;
+		clk <= '1';
+		wait for 10 ns;
+		clk <= '0';
+		wait for 10 ns;
+		clk <= '1';
+		wait for 10 ns;
+		clk <= '0';
+		wait for 10 ns;
+		-- clr
+		i <= "111";
 		clk <= '1';
 		wait for 10 ns;
 		clk <= '0';

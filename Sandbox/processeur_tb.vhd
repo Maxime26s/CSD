@@ -12,7 +12,7 @@ architecture test of processeur_tb is
 	signal buswire : std_logic_vector(8 downto 0);
 	signal done : std_logic;
 begin
-  DUT: processeur port map(run, clk, rst, din, buswire, done);
+  DUT: processeur port map(run, clk, rst, din, buswire, done, '0', "00");
 
   process
   begin
@@ -30,7 +30,7 @@ begin
 	 wait for 10 ns;
 	 
     -- mvi
-    din <= "001001001";
+    din <= "001001010";
 	 wait for 5 ns;
 	 clk <= '1';
 	 wait for 10 ns;
@@ -72,7 +72,26 @@ begin
 	 clk <= '0';
 	 wait for 10 ns;
 	 -- sub
-	 din <= "011000001";
+--	 din <= "011000001";
+--	 wait for 5 ns;
+--	 clk <= '1';
+--	 wait for 10 ns;
+--	 clk <= '0';
+--	 wait for 10 ns;
+--	 clk <= '1';
+--	 wait for 10 ns;
+--	 clk <= '0';
+--	 wait for 10 ns;
+--	 clk <= '1';
+--	 wait for 10 ns;
+--	 clk <= '0';
+--	 wait for 10 ns;
+--	 clk <= '1';
+--	 wait for 10 ns;
+--	 clk <= '0';
+--	 wait for 10 ns;
+	 -- sub
+	 din <= "100000001";
 	 wait for 5 ns;
 	 clk <= '1';
 	 wait for 10 ns;
