@@ -33,4 +33,5 @@ BEGIN
 	sseg3 : sseg PORT MAP("0" & SW(3 DOWNTO 1), HEX3);
 	sseg4 : sseg PORT MAP("0" & SW(6 DOWNTO 4), HEX4);
 	sseg5 : sseg PORT MAP("0" & SW(9 DOWNTO 7), HEX5);
+
 END arch;
