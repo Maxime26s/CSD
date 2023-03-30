@@ -27,6 +27,9 @@ begin
 	 
 	 data <= "100000000";
 	 wait for 10 ns;
+	 
+	 data <= "111011001";
+	 wait for 10 ns;
     wait;
   end process;
 end architecture test;

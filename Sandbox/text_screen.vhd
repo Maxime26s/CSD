@@ -49,6 +49,11 @@ ARCHITECTURE DE1 OF text_screen IS
 		RETURN to_integer(to_unsigned(to_integer(unsigned(input_vec)), 7) + 48);
 	END FUNCTION ternary_to_ascii;
 
+	FUNCTION nibble_to_ascii(input_vec : STD_LOGIC_VECTOR(3 DOWNTO 0)) RETURN INTEGER IS
+	BEGIN
+		RETURN to_integer(to_unsigned(to_integer(unsigned(input_vec)), 7) + 48);
+	END FUNCTION nibble_to_ascii;
+
 	ALIAS clock : STD_LOGIC IS Clock_50;
 	ALIAS reset : STD_LOGIC IS KEY(1);
 	CONSTANT screen_width : INTEGER := 80;
@@ -74,7 +79,6 @@ ARCHITECTURE DE1 OF text_screen IS
 	SIGNAL reg5h, reg5t, reg5u : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL reg6h, reg6t, reg6u : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL reg7h, reg7t, reg7u : STD_LOGIC_VECTOR(3 DOWNTO 0);
-	SIGNAL dinh, dint, dinu : STD_LOGIC_VECTOR(3 DOWNTO 0);
 
 BEGIN
 
@@ -86,7 +90,6 @@ BEGIN
 	dc5 : digit_converter PORT MAP(reg5, reg5h, reg5t, reg5u);
 	dc6 : digit_converter PORT MAP(reg6, reg6h, reg6t, reg6u);
 	dc7 : digit_converter PORT MAP(reg7, reg7h, reg7t, reg7u);
-	dcdin : digit_converter PORT MAP(din, dinh, dint, dinu);
 
 	vga : ENTITY work.vga_font PORT MAP(--VGA with font table. 
 		clock => clock,
@@ -341,11 +344,11 @@ BEGIN
 								WHEN to_unsigned(5, 7) =>
 									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg0(8 DOWNTO 6)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg0h));
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg0(5 DOWNTO 3)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg0t));
 								WHEN to_unsigned(8, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg0(2 DOWNTO 0)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg0u));
 								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(18, 6) =>
@@ -361,11 +364,11 @@ BEGIN
 								WHEN to_unsigned(5, 7) =>
 									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg1(8 DOWNTO 6)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg1h));
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg1(5 DOWNTO 3)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg1t));
 								WHEN to_unsigned(8, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg1(2 DOWNTO 0)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg1u));
 								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(19, 6) =>
@@ -381,11 +384,11 @@ BEGIN
 								WHEN to_unsigned(5, 7) =>
 									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg2(8 DOWNTO 6)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg2h));
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg2(5 DOWNTO 3)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg2t));
 								WHEN to_unsigned(8, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg2(2 DOWNTO 0)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg2u));
 								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(20, 6) =>
@@ -401,11 +404,11 @@ BEGIN
 								WHEN to_unsigned(5, 7) =>
 									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg3(8 DOWNTO 6)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg3h));
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg3(5 DOWNTO 3)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg3t));
 								WHEN to_unsigned(8, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg3(2 DOWNTO 0)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg3u));
 								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(21, 6) =>
@@ -421,11 +424,11 @@ BEGIN
 								WHEN to_unsigned(5, 7) =>
 									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg4(8 DOWNTO 6)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg4h));
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg4(5 DOWNTO 3)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg4t));
 								WHEN to_unsigned(8, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg4(2 DOWNTO 0)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg4u));
 								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(22, 6) =>
@@ -441,11 +444,11 @@ BEGIN
 								WHEN to_unsigned(5, 7) =>
 									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg5(8 DOWNTO 6)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg5t));
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg5(5 DOWNTO 3)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg5h));
 								WHEN to_unsigned(8, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg5(2 DOWNTO 0)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg5u));
 								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(23, 6) =>
@@ -461,11 +464,11 @@ BEGIN
 								WHEN to_unsigned(5, 7) =>
 									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg6(8 DOWNTO 6)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg6h));
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg6(5 DOWNTO 3)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg6t));
 								WHEN to_unsigned(8, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg6(2 DOWNTO 0)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg6u));
 								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(24, 6) =>
@@ -481,11 +484,11 @@ BEGIN
 								WHEN to_unsigned(5, 7) =>
 									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg7(8 DOWNTO 6)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg7h));
 								WHEN to_unsigned(7, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg7(5 DOWNTO 3)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg7t));
 								WHEN to_unsigned(8, 7) =>
-									curr_char <= ascii_to_vector(ternary_to_ascii(reg7(2 DOWNTO 0)));
+									curr_char <= ascii_to_vector(nibble_to_ascii(reg7u));
 								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(26, 6) =>
