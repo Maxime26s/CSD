@@ -11,7 +11,6 @@ package fsm_constants is
 			inControl : out std_logic_vector(10 downto 0);
 			outControl : out std_logic_vector(10 downto 0);
 			done : out std_logic;
---			mode : out std_logic_vector(2 downto 0);
 			stateValue : out State_type
 		);
 	end component;
@@ -35,7 +34,6 @@ ENTITY fsm IS
 		inControl : out std_logic_vector(10 downto 0);
 		outControl : out std_logic_vector(10 downto 0);
 		done : out std_logic;
---		mode : out std_logic_vector(2 downto 0);
 		stateValue : out work.fsm_constants.State_type
 	);
 END fsm;
