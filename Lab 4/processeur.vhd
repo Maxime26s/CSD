@@ -1,67 +1,67 @@
-library ieee;
-use ieee.std_logic_1164.all;
-use work.fsm_constants.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE work.fsm_constants.ALL;
 
-package processeur_constants is
-	component processeur is
-	PORT (
-		run, clk, rst : in std_logic;
-		din : in std_logic_vector(8 downto 0);
-		buswire : buffer std_logic_vector(8 downto 0);
-		done : out std_logic
-	);
-	end component;
-end package;
+PACKAGE processeur_constants IS
+	COMPONENT processeur IS
+		PORT (
+			run, clk, rst : IN STD_LOGIC;
+			din : IN STD_LOGIC_VECTOR(8 DOWNTO 0);
+			buswire : BUFFER STD_LOGIC_VECTOR(8 DOWNTO 0);
+			done : OUT STD_LOGIC
+		);
+	END COMPONENT;
+END PACKAGE;
 ------------------------------------------------------
 LIBRARY ieee;
-USE ieee.std_logic_1164.all;
-use work.ff.all;
-use work.ch8.all;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
-use work.registre_constants.all;
-use work.addsub_constants.all;
-use work.muxb10_constants.all;
-use work.fsm_constants.all;
+USE ieee.std_logic_1164.ALL;
+USE work.ff.ALL;
+USE work.ch8.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+USE work.registre_constants.ALL;
+USE work.addsub_constants.ALL;
+USE work.muxb10_constants.ALL;
+USE work.fsm_constants.ALL;
 
 ENTITY processeur IS
 	PORT (
-		run, clk, rst : in std_logic;
-		din : in std_logic_vector(8 downto 0);
-		buswire : buffer std_logic_vector(8 downto 0);
-		done : out std_logic
+		run, clk, rst : IN STD_LOGIC;
+		din : IN STD_LOGIC_VECTOR(8 DOWNTO 0);
+		buswire : BUFFER STD_LOGIC_VECTOR(8 DOWNTO 0);
+		done : OUT STD_LOGIC
 	);
 END processeur;
 
 ARCHITECTURE arch OF processeur IS
-	signal r0in, r1in, r2in, r3in, r4in, r5in, r6in, r7in, ain, gin, irin, mode : std_logic := '0';
-	signal inControl : std_logic_vector(10 downto 0);
-	signal outControl : std_logic_vector(9 downto 0);
-	signal r0out, r1out, r2out, r3out, r4out, r5out, r6out, r7out, aout, gout, irout, addsubout : std_logic_vector(8 downto 0);
-	signal sb : std_logic_vector(3 downto 0);
-	signal i : std_logic_vector(2 downto 0);
-	signal xReg, yReg : std_logic_vector(7 downto 0);
+	SIGNAL r0in, r1in, r2in, r3in, r4in, r5in, r6in, r7in, ain, gin, irin, mode : STD_LOGIC := '0';
+	SIGNAL inControl : STD_LOGIC_VECTOR(10 DOWNTO 0);
+	SIGNAL outControl : STD_LOGIC_VECTOR(9 DOWNTO 0);
+	SIGNAL r0out, r1out, r2out, r3out, r4out, r5out, r6out, r7out, aout, gout, irout, addsubout : STD_LOGIC_VECTOR(8 DOWNTO 0);
+	SIGNAL sb : STD_LOGIC_VECTOR(3 DOWNTO 0);
+	SIGNAL i : STD_LOGIC_VECTOR(2 DOWNTO 0);
+	SIGNAL xReg, yReg : STD_LOGIC_VECTOR(7 DOWNTO 0);
 BEGIN
-	r0 : registre port map(buswire, clk, inControl(0), r0out);
-	r1 : registre port map(buswire, clk, inControl(1), r1out);
-	r2 : registre port map(buswire, clk, inControl(2), r2out);
-	r3 : registre port map(buswire, clk, inControl(3), r3out);
-	r4 : registre port map(buswire, clk, inControl(4), r4out);
-	r5 : registre port map(buswire, clk, inControl(5), r5out);
-	r6 : registre port map(buswire, clk, inControl(6), r6out);
-	r7 : registre port map(buswire, clk, inControl(7), r7out);
-	
-	a : registre port map(buswire, clk, inControl(8), aout);
-	addsub0 : addsub port map(aout, buswire, mode, addsubout);
-	g : registre port map(addsubout, clk, inControl(9), gout);
-	
-	ir : registre port map(din, clk, inControl(10), irout);
-	
-	i <= irout(8 downto 6);
-	decX : Dec generic map(3, 8) port map(irout(5 downto 3), xReg);
-	decY : Dec generic map(3, 8) port map(irout(2 downto 0), yReg);
-	
-	fsmProc : fsm port map(i, xReg, yReg, run, clk, rst, inControl, outControl, done, mode);
-	
-	enc : Enc164 port map("000000" & outControl, sb);
-	mux : Muxb10 port map(gout, "000000" & irout(2 downto 0), r7out, r6out, r5out, r4out, r3out, r2out, r1out, r0out, sb, buswire);
+	r0 : registre PORT MAP(buswire, clk, inControl(0), r0out);
+	r1 : registre PORT MAP(buswire, clk, inControl(1), r1out);
+	r2 : registre PORT MAP(buswire, clk, inControl(2), r2out);
+	r3 : registre PORT MAP(buswire, clk, inControl(3), r3out);
+	r4 : registre PORT MAP(buswire, clk, inControl(4), r4out);
+	r5 : registre PORT MAP(buswire, clk, inControl(5), r5out);
+	r6 : registre PORT MAP(buswire, clk, inControl(6), r6out);
+	r7 : registre PORT MAP(buswire, clk, inControl(7), r7out);
+
+	a : registre PORT MAP(buswire, clk, inControl(8), aout);
+	addsub0 : addsub PORT MAP(aout, buswire, mode, addsubout);
+	g : registre PORT MAP(addsubout, clk, inControl(9), gout);
+
+	ir : registre PORT MAP(din, clk, inControl(10), irout);
+
+	i <= irout(8 DOWNTO 6);
+	decX : Dec GENERIC MAP(3, 8) PORT MAP(irout(5 DOWNTO 3), xReg);
+	decY : Dec GENERIC MAP(3, 8) PORT MAP(irout(2 DOWNTO 0), yReg);
+
+	fsmProc : fsm PORT MAP(i, xReg, yReg, run, clk, rst, inControl, outControl, done, mode);
+
+	enc : Enc164 PORT MAP("000000" & outControl, sb);
+	mux : Muxb10 PORT MAP(gout, "000000" & irout(2 DOWNTO 0), r7out, r6out, r5out, r4out, r3out, r2out, r1out, r0out, sb, buswire);
 END arch;

@@ -1,39 +1,39 @@
-library ieee;
-use ieee.std_logic_1164.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
 
-package registre_constants is
-	component registre is
-	GENERIC 	(n : INTEGER := 9);
-	PORT (
-		rin : in std_logic_vector(n-1 downto 0);
-		clk, activated : in std_logic;
-		rout : out std_logic_vector(n-1 downto 0)
-	);
-	end component;
-end package;
+PACKAGE registre_constants IS
+	COMPONENT registre IS
+		GENERIC (n : INTEGER := 9);
+		PORT (
+			rin : IN STD_LOGIC_VECTOR(n - 1 DOWNTO 0);
+			clk, activated : IN STD_LOGIC;
+			rout : OUT STD_LOGIC_VECTOR(n - 1 DOWNTO 0)
+		);
+	END COMPONENT;
+END PACKAGE;
 ------------------------------------------------------
 LIBRARY ieee;
-USE ieee.std_logic_1164.all;
-use work.ff.all;
-use work.sseg_constants.all;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+USE ieee.std_logic_1164.ALL;
+USE work.ff.ALL;
+USE work.sseg_constants.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 ENTITY registre IS
-	GENERIC 	(n : INTEGER := 9);
+	GENERIC (n : INTEGER := 9);
 	PORT (
-		rin : in std_logic_vector(n-1 downto 0);
-		clk, activated : in std_logic;
-		rout : out std_logic_vector(n-1 downto 0)
+		rin : IN STD_LOGIC_VECTOR(n - 1 DOWNTO 0);
+		clk, activated : IN STD_LOGIC;
+		rout : OUT STD_LOGIC_VECTOR(n - 1 DOWNTO 0)
 	);
 END registre;
 
 ARCHITECTURE arch OF registre IS
 BEGIN
-	process(all) BEGIN	
-		if rising_edge(clk) then
-			if activated then
+	PROCESS (ALL) BEGIN
+		IF rising_edge(clk) THEN
+			IF activated THEN
 				rout <= rin;
-			end if;
-		end if;
-	end process;
+			END IF;
+		END IF;
+	END PROCESS;
 END arch;

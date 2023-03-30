@@ -13,13 +13,12 @@ architecture test of fsm_tb is
 	signal run, clk, rst : std_logic;
 	signal inControl : std_logic_vector(10 downto 0);
 	signal outControl : std_logic_vector(9 downto 0);
-	signal done : std_logic;
+	signal done, mode : std_logic;
 	signal state : State_type;
 begin
-	DUT: fsm port map(i, xReg, yReg, run, clk, rst, inControl, outControl, done, state);
+	DUT: fsm port map(i, xReg, yReg, run, clk, rst, inControl, outControl, done, mode, state);
 	process begin
 		report "Testbench starting...";
-		
 		run <= '1';
 		clk <= '0';
 		wait for 10 ns;
