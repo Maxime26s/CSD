@@ -27,8 +27,7 @@ begin
 	 wait for 10 ns;
 	 rst <= '0';
 	 clk <= '0';
-	 wait for 10 ns;
-	 
+	 wait for 10 ns;	 
     -- mvi
     din <= "001001010";
 	 wait for 5 ns;
@@ -40,7 +39,6 @@ begin
 	 wait for 10 ns;
 	 clk <= '0';
 	 wait for 10 ns;
-	 
 	 -- mv
     din <= "000000001";
 	 wait for 5 ns;
