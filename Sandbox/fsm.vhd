@@ -87,13 +87,6 @@ BEGIN
 				when "010" | "011" | "100" | "101" | "110" =>
 					inControl <= "00100000000";
 					outControl <= "000" & xReg;
---					IF i = "010" THEN mode <= "000";
---					ELSIF i = "011" THEN mode <= "001";
---					ELSIF i = "100" THEN mode <= "010";
---					ELSIF i = "101" THEN mode <= "011";
---					ELSIF i = "110" THEN mode <= "100";
---					ELSE mode <= "000";
---					END IF;
 				when "111" =>
 					inControl <= "00011111111";
 					outControl <= "10000000000";
