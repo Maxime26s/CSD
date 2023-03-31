@@ -17,7 +17,14 @@ begin
 			case in_char_binary is
 			--table de conversion ASCII
 				when 8d"12" => out_sseg_char <= "11000000";
---
+				when 8d"48" => out_sseg_char <= "11000000";
+				when 8d"49" => out_sseg_char <= "11000000";
+				when 8d"50" => out_sseg_char <= "11000000";
+				when 8d"51" => out_sseg_char <= "11000000";
+				when 8d"52" => out_sseg_char <= "11000000";
+				when 8d"53" => out_sseg_char <= "11000000";
+				when 8d"54" => out_sseg_char <= "11000000";
+				when 8d"55" => out_sseg_char <= "11000000";
 				--...(reste de la table ASCII
 				when others => out_sseg_char <= "11111111";
 			end case;
