@@ -69,26 +69,7 @@ begin
 	 wait for 10 ns;
 	 clk <= '0';
 	 wait for 10 ns;
-	 -- sub
---	 din <= "011000001";
---	 wait for 5 ns;
---	 clk <= '1';
---	 wait for 10 ns;
---	 clk <= '0';
---	 wait for 10 ns;
---	 clk <= '1';
---	 wait for 10 ns;
---	 clk <= '0';
---	 wait for 10 ns;
---	 clk <= '1';
---	 wait for 10 ns;
---	 clk <= '0';
---	 wait for 10 ns;
---	 clk <= '1';
---	 wait for 10 ns;
---	 clk <= '0';
---	 wait for 10 ns;
-	 -- sub
+	 -- mul
 	 din <= "100000001";
 	 wait for 5 ns;
 	 clk <= '1';
@@ -99,6 +80,55 @@ begin
 	 wait for 10 ns;
 	 clk <= '0';
 	 wait for 10 ns;
+	 clk <= '1';
+	 wait for 10 ns;
+	 clk <= '0';
+	 wait for 10 ns;
+	 clk <= '1';
+	 wait for 10 ns;
+	 clk <= '0';
+	 wait for 10 ns;
+	 -- div
+	 din <= "101000001";
+	 wait for 5 ns;
+	 clk <= '1';
+	 wait for 10 ns;
+	 clk <= '0';
+	 wait for 10 ns;
+	 clk <= '1';
+	 wait for 10 ns;
+	 clk <= '0';
+	 wait for 10 ns;
+	 clk <= '1';
+	 wait for 10 ns;
+	 clk <= '0';
+	 wait for 10 ns;
+	 clk <= '1';
+	 wait for 10 ns;
+	 clk <= '0';
+	 wait for 10 ns;
+	 -- sub
+	 din <= "011000001";
+	 wait for 5 ns;
+	 clk <= '1';
+	 wait for 10 ns;
+	 clk <= '0';
+	 wait for 10 ns;
+	 clk <= '1';
+	 wait for 10 ns;
+	 clk <= '0';
+	 wait for 10 ns;
+	 clk <= '1';
+	 wait for 10 ns;
+	 clk <= '0';
+	 wait for 10 ns;
+	 clk <= '1';
+	 wait for 10 ns;
+	 clk <= '0';
+	 wait for 10 ns;
+	 -- clr
+	 din <= "111000000";
+	 wait for 5 ns;
 	 clk <= '1';
 	 wait for 10 ns;
 	 clk <= '0';
