@@ -68,7 +68,6 @@ ARCHITECTURE DE1 OF text_screen IS
 	TYPE state IS (clean0, clean1, clean2, clean3, done);
 	SIGNAL SV : state;
 
-	-- Define a signal for the current character to write to the screen
 	SIGNAL curr_char : STD_LOGIC_VECTOR(6 DOWNTO 0) := STD_LOGIC_VECTOR(to_unsigned(32, 7));
 
 	SIGNAL reg0h, reg0t, reg0u : STD_LOGIC_VECTOR(3 DOWNTO 0);
