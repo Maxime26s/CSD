@@ -158,10 +158,6 @@ BEGIN
 									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
 									curr_char <= ascii_to_vector(48);
-								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(48);
-								WHEN to_unsigned(7, 7) =>
-									curr_char <= ascii_to_vector(48);
 								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(4, 6) =>
@@ -175,10 +171,6 @@ BEGIN
 								WHEN to_unsigned(4, 7) =>
 									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= ascii_to_vector(48);
-								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(48);
-								WHEN to_unsigned(7, 7) =>
 									curr_char <= ascii_to_vector(49);
 								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
@@ -193,11 +185,7 @@ BEGIN
 								WHEN to_unsigned(4, 7) =>
 									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= ascii_to_vector(48);
-								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(49);
-								WHEN to_unsigned(7, 7) =>
-									curr_char <= ascii_to_vector(48);
+									curr_char <= ascii_to_vector(50);
 								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(6, 6) =>
@@ -211,11 +199,7 @@ BEGIN
 								WHEN to_unsigned(4, 7) =>
 									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= ascii_to_vector(48);
-								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(49);
-								WHEN to_unsigned(7, 7) =>
-									curr_char <= ascii_to_vector(49);
+									curr_char <= ascii_to_vector(51);
 								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(7, 6) =>
@@ -229,11 +213,7 @@ BEGIN
 								WHEN to_unsigned(4, 7) =>
 									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= ascii_to_vector(49);
-								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(48);
-								WHEN to_unsigned(7, 7) =>
-									curr_char <= ascii_to_vector(48);
+									curr_char <= ascii_to_vector(52);
 								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(8, 6) =>
@@ -247,11 +227,7 @@ BEGIN
 								WHEN to_unsigned(4, 7) =>
 									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= ascii_to_vector(49);
-								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(48);
-								WHEN to_unsigned(7, 7) =>
-									curr_char <= ascii_to_vector(49);
+									curr_char <= ascii_to_vector(53);
 								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(9, 6) =>
@@ -265,11 +241,7 @@ BEGIN
 								WHEN to_unsigned(4, 7) =>
 									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= ascii_to_vector(49);
-								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(49);
-								WHEN to_unsigned(7, 7) =>
-									curr_char <= ascii_to_vector(48);
+									curr_char <= ascii_to_vector(54);
 								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(10, 6) =>
@@ -283,11 +255,7 @@ BEGIN
 								WHEN to_unsigned(4, 7) =>
 									curr_char <= ascii_to_vector(32);
 								WHEN to_unsigned(5, 7) =>
-									curr_char <= ascii_to_vector(49);
-								WHEN to_unsigned(6, 7) =>
-									curr_char <= ascii_to_vector(49);
-								WHEN to_unsigned(7, 7) =>
-									curr_char <= ascii_to_vector(49);
+									curr_char <= ascii_to_vector(55);
 								WHEN OTHERS => curr_char <= ascii_to_vector(32);
 							END CASE;
 						WHEN to_unsigned(12, 6) =>
