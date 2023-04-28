@@ -3,14 +3,14 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity VGA_green is
-	port(	CLOCK_50 : in std_logic; -- clock interne
-			KEY     : in std_logic_vector(3 downto 0); -- bouton
+	port(	CLOCK_50 : in std_logic; -- internal clock
+			KEY     : in std_logic_vector(3 downto 0); -- button
 			SW      : in std_logic_vector(9 downto 0); -- switch
-			VGA_R, VGA_G, VGA_B : out std_logic_vector(3 downto 0); -- signaux RGB du ADV7123
-			VGA_CLK : inout std_logic;  -- signaux du MAX10
-			BLANK_N : out std_logic;-- signaux du MAX10
-			VGA_HS  : out std_logic;-- signaux du MAX10
-			VGA_VS  : out std_logic;-- signaux du MAX10
+			VGA_R, VGA_G, VGA_B : out std_logic_vector(3 downto 0); -- ADV7123 RGB signals
+			VGA_CLK : inout std_logic;  -- MAX10 signals
+			BLANK_N : out std_logic;-- MAX10 signals
+			VGA_HS  : out std_logic;-- MAX10 signals
+			VGA_VS  : out std_logic;-- MAX10 signals
 			GPIO    : out std_logic_vector(34 downto 0)
 	);
 end entity;
@@ -29,7 +29,7 @@ architecture DE1_SoC of VGA_green is
 begin
 
 ----------------------------------------------------------------
--- port map du pll
+-- port map of the PLL
 ----------------------------------------------------------------
 	
 	pll : pll_vga port map (
@@ -38,7 +38,7 @@ begin
 	);
 	
 ----------------------------------------------------------------
--- Définir la couleur
+-- Set the color
 ----------------------------------------------------------------
 
 	reset <= not KEY(0);
@@ -46,7 +46,7 @@ begin
 	GPIO(0) <= VGA_CLK;
 	
 ----------------------------------------------------------------
--- Générer les signaux de sync
+-- Generate the sync signals
 ----------------------------------------------------------------
    process(VGA_CLK, KEY(0)) is
       variable hcount : integer range 0 to 800;
@@ -64,6 +64,7 @@ begin
       elsif(VGA_CLK'event and VGA_CLK = '1') then
 
          if(hcount >= 0 and hcount <= 639 and vcount >= 0 and vcount <= 479) then
+				-- Draw a green cross in the center of the screen with a width of 100 pixels
 				if (hcount >= 270 and hcount <= 370) or (vcount >= 190 and vcount <= 290) then
 					VGA_R <= "0000";
 					VGA_G <= "1111";
@@ -81,7 +82,7 @@ begin
 
 			end if;
 			
-			-- Incrémente les compteurs hcount / vcount
+			-- Increment the hcount / vcount counters
 			if(hcount = 799) then
 				hcount := 0;
 				if(vcount = 524) then	
@@ -93,17 +94,17 @@ begin
 				hcount := hcount + 1;
 			end if;
 			
-			-- Définit le sync pulse horizontal
+			-- Set the horizontal sync pulse
 			if(hcount = 656) then		vga_hs <= '0';
-			elsif(hcount = 752) then	vga_hs <= '1';
-			end if;
-			
-			-- Définit le sync pulse vertical
-			if(vcount = 490) then		vga_vs <= '0';
-			elsif(vcount = 492) then	vga_vs <= '1';
-			end if;
-			
-      end if;
-   end process;
-	
+elsif(hcount = 752) then vga_hs <= '1';
+end if;
+		-- Set the vertical sync pulse
+		if(vcount = 490) then		vga_vs <= '0';
+		elsif(vcount = 492) then	vga_vs <= '1';
+		end if;
+		
+  end if;
+
+end process;
+
 end DE1_SoC;

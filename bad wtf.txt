@@ -63,22 +63,16 @@ begin
 			
       elsif(VGA_CLK'event and VGA_CLK = '1') then
 
-         if(hcount >= 0 and hcount <= 639 and vcount >= 0 and vcount <= 479) then
-				if (hcount >= 270 and hcount <= 370) or (vcount >= 190 and vcount <= 290) then
-					VGA_R <= "0000";
-					VGA_G <= "1111";
-					VGA_B <= "0000";
-				else
-					VGA_R <= "0000";
-					VGA_G <= "0000";
-					VGA_B <= "0000";
-				end if;
+         if (hcount >= 270 and hcount <= 370) or (vcount >= 190 and vcount <= 290) then
+				VGA_R <= "0000";
+				VGA_G <= "1111";
+				VGA_B <= "0000";
+		
          else
-			-- Blank the screen when not in range
+			-- blank the screen when not in range
 				VGA_R <= "0000";
 				VGA_G <= "0000";
 				VGA_B <= "0000";
-
 			end if;
 			
 			-- Incrémente les compteurs hcount / vcount

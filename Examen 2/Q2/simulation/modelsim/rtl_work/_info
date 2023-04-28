@@ -1,0 +1,129 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/WORK/COURS/6GEI367/CODE/vga_exemple/simulation/modelsim
+Evga_green
+Z1 w1580785049
+Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z5 8C:/WORK/COURS/6GEI367/CODE/vga_exemple/VGA_green.vhd
+Z6 FC:/WORK/COURS/6GEI367/CODE/vga_exemple/VGA_green.vhd
+l0
+L5
+V;<72Ij1ijikgMMNd]^^z?3
+!s100 XGf2nk]b^S<DL^@eR:dBQ2
+Z7 OV;C;10.5b;63
+31
+Z8 !s110 1580785131
+!i10b 1
+Z9 !s108 1580785131.000000
+Z10 !s90 -reportprogress|300|-93|-work|work|C:/WORK/COURS/6GEI367/CODE/vga_exemple/VGA_green.vhd|
+Z11 !s107 C:/WORK/COURS/6GEI367/CODE/vga_exemple/VGA_green.vhd|
+!i113 1
+Z12 o-93 -work work
+Z13 tExplicit 1 CvgOpt 0
+Ade1_soc
+R2
+R3
+R4
+DEx4 work 9 vga_green 0 22 ;<72Ij1ijikgMMNd]^^z?3
+l30
+L17
+VM`H^HX_=Ii056zzhT496>0
+!s100 jm0e2mVCADT57DOi3d:J70
+R7
+31
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Evga_green_tb
+Z14 w1580783441
+R3
+R4
+R0
+Z15 8C:/WORK/COURS/6GEI367/CODE/vga_exemple/simulation/modelsim/VGA_green_tb.vhd
+Z16 FC:/WORK/COURS/6GEI367/CODE/vga_exemple/simulation/modelsim/VGA_green_tb.vhd
+l0
+L30
+VQ7WUWX_YXGIZ^oWbX3knz1
+!s100 4:>oFa0;P_ElcY=XJVR:X2
+R7
+31
+R8
+!i10b 1
+R9
+Z17 !s90 -reportprogress|300|-93|-work|work|C:/WORK/COURS/6GEI367/CODE/vga_exemple/simulation/modelsim/VGA_green_tb.vhd|
+Z18 !s107 C:/WORK/COURS/6GEI367/CODE/vga_exemple/simulation/modelsim/VGA_green_tb.vhd|
+!i113 1
+R12
+R13
+Avga_green_arch
+R3
+R4
+DEx4 work 12 vga_green_tb 0 22 Q7WUWX_YXGIZ^oWbX3knz1
+l62
+L32
+V?:48nCWEIgM;>IhdACU@e3
+!s100 fU520NM5C<mHX=?lb;;eZ0
+R7
+31
+R8
+!i10b 1
+R9
+R17
+R18
+!i113 1
+R12
+R13
+Evga_pll
+Z19 w1580678635
+R3
+R4
+Z20 DPx12 altera_lnsim 23 altera_lnsim_components 0 22 ;`SHL]^j4UaADA9ENAN^]0
+R0
+Z21 8C:/WORK/COURS/6GEI367/CODE/vga_exemple/vga_pll_sim/vga_pll.vho
+Z22 FC:/WORK/COURS/6GEI367/CODE/vga_exemple/vga_pll_sim/vga_pll.vho
+l0
+L33
+VWNcQ`M]E0]TSanXXKAij71
+!s100 fc_k7;MOePjY6YHG;UjM`3
+R7
+32
+R8
+!i10b 1
+R9
+Z23 !s90 -reportprogress|300|C:/WORK/COURS/6GEI367/CODE/vga_exemple/vga_pll_sim/vga_pll.vho|
+Z24 !s107 C:/WORK/COURS/6GEI367/CODE/vga_exemple/vga_pll_sim/vga_pll.vho|
+!i113 1
+R13
+Artl
+R3
+R4
+R20
+DEx4 work 7 vga_pll 0 22 WNcQ`M]E0]TSanXXKAij71
+l50
+L43
+V^F8PQl0Xi^S6oCcAbFc][1
+!s100 4HU@IzoSz:kU[jSK[jD=10
+R7
+32
+R8
+!i10b 1
+R9
+R23
+R24
+!i113 1
+R13
